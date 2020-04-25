@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/C4-Smoketrees/blog-client.git"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
   "author": "Smoketrees",
   "license": "MIT",
   "bugs": {
