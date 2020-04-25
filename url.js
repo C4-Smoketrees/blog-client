@@ -1,1 +1,1 @@
-module.exports = 'https://localhost:8443';
+module.exports = process.env.BLOG_URL

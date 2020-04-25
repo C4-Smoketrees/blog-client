@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-const agent = require('./agent');
-const url = require('./url');
+const fetch = require('node-fetch')
+const agent = require('./agent')
+const url = require('./url')
 
 async function blogReport (blogId, report, token) {
   const res = await fetch(`${url}/reports/blog?blogId=${blogId}`, {
@@ -8,9 +8,9 @@ async function blogReport (blogId, report, token) {
     body: JSON.stringify({ report: report }), // { report: { reportReason: 1, description: 'lund' } }),
     headers: { 'Content-Type': 'application/json', Authorization: token },
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function commentReport (commentId, report, token) {
@@ -19,12 +19,12 @@ async function commentReport (commentId, report, token) {
     body: JSON.stringify({ report: report }), // ),
     headers: { 'Content-Type': 'application/json', Authorization: token },
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 module.exports = {
   blogReport,
   commentReport
-};
+}
