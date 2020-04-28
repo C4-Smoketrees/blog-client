@@ -1,33 +1,33 @@
-const fetch = require('node-fetch');
-const agent = require('./agent');
-const url = require('./url');
+const fetch = require('node-fetch')
+const agent = require('./agent')
+const url = require('./url')
 
 async function getOneBlog (blogId, token) {
-  let auth = '';
+  let auth = ''
   if (token) {
-    auth = token;
+    auth = token
   }
   const res = await fetch(`${url}/blogs/one?blogId=${blogId}`, {
     method: 'GET',
     headers: { Authorization: auth },
     agent
-  });
-  const body = res.json();
-  return body;
+  })
+  const body = res.json()
+  return body
 }
 
 async function getAllBlog (token) {
-  let auth = '';
+  let auth = ''
   if (token) {
-    auth = token;
+    auth = token
   }
   const res = await fetch(`${url}/blogs/all`, {
     method: 'GET',
     headers: { Authorization: auth },
     agent
-  });
-  const body = res.json();
-  return body;
+  })
+  const body = res.json()
+  return body
 }
 
 async function deleteBlog (blogId, token) {
@@ -36,9 +36,9 @@ async function deleteBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ _id: blogId }),
     agent
-  });
-  const body = res.json();
-  return body;
+  })
+  const body = res.json()
+  return body
 }
 
 async function updateBlog (blogId, blog, token) {
@@ -50,13 +50,14 @@ async function updateBlog (blogId, blog, token) {
         _id: blogId,
         content: blog.content,
         title: blog.title,
-        tags: blog.tags
+        tags: blog.tags,
+        coverImage: blog.coverImage
       }
     }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function upvoteBlog (blogId, token) {
@@ -65,9 +66,9 @@ async function upvoteBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function downvoteBlog (blogId, token) {
@@ -76,9 +77,9 @@ async function downvoteBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function removeUpvoteBlog (blogId, token) {
@@ -87,9 +88,9 @@ async function removeUpvoteBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function removeDownvoteBlog (blogId, token) {
@@ -98,9 +99,9 @@ async function removeDownvoteBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function starBlog (blogId, token) {
@@ -109,9 +110,9 @@ async function starBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function unstarBlog (blogId, token) {
@@ -120,23 +121,23 @@ async function unstarBlog (blogId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ blogId: blogId }),
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 async function search (query, lastDate, token) {
-  let auth = '';
+  let auth = ''
   if (token) {
-    auth = token;
+    auth = token
   }
   const res = await fetch(`${url}/blogs/search?q=${encodeURIComponent(query)}&ld=${encodeURIComponent(lastDate)}`, {
     method: 'GET',
     headers: { Authorization: auth },
     agent
-  });
-  const body = await res.json();
-  return body;
+  })
+  const body = await res.json()
+  return body
 }
 
 module.exports = {
@@ -151,4 +152,4 @@ module.exports = {
   starBlog,
   unstarBlog,
   search
-};
+}
