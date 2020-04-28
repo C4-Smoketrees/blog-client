@@ -1,6 +1,6 @@
-const fetch = require('node-fetch')
-const agent = require('./agent')
-const url = require('./url')
+const fetch = require('node-fetch');
+const agent = require('./agent');
+const url = require('./url');
 
 async function newComment (id, comment, token) {
   const res = await fetch(`${url}/comments`, {
@@ -8,23 +8,23 @@ async function newComment (id, comment, token) {
     body: JSON.stringify({ id: id, comment: comment }),
     headers: { 'Content-Type': 'application/json', Authorization: token },
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function getComment (commentId, token) {
-  let auth = ''
+  let auth = '';
   if (token) {
-    auth = token
+    auth = token;
   }
   const res = await fetch(`${url}/comments?commentId=${commentId}`, {
     method: 'GET',
     headers: { Authorization: auth },
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function updateComment (commentId, content, token) {
@@ -33,9 +33,9 @@ async function updateComment (commentId, content, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ comment: { _id: commentId, content: content } }),
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function upvoteComment (commentId, token) {
@@ -44,9 +44,9 @@ async function upvoteComment (commentId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ commentId: commentId }),
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function downvoteComment (commentId, token) {
@@ -55,9 +55,9 @@ async function downvoteComment (commentId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ commentId: commentId }),
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function removeUpvoteComment (commentId, token) {
@@ -66,9 +66,9 @@ async function removeUpvoteComment (commentId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ commentId: commentId }),
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
 async function removeDownvoteComment (commentId, token) {
@@ -77,15 +77,15 @@ async function removeDownvoteComment (commentId, token) {
     headers: { Authorization: token, 'Content-Type': 'application/json' },
     body: JSON.stringify({ commentId: commentId }),
     agent
-  })
-  const body = await res.json()
-  return body
+  });
+  const body = await res.json();
+  return body;
 }
 
-exports.newComment = newComment
-exports.getComment = getComment
-exports.updateComment = updateComment
-exports.upvoteComment = upvoteComment
-exports.downvoteComment = downvoteComment
-exports.removeUpvoteComment = removeUpvoteComment
-exports.removeDownvoteComment = removeDownvoteComment
+exports.newComment = newComment;
+exports.getComment = getComment;
+exports.updateComment = updateComment;
+exports.upvoteComment = upvoteComment;
+exports.downvoteComment = downvoteComment;
+exports.removeUpvoteComment = removeUpvoteComment;
+exports.removeDownvoteComment = removeDownvoteComment;

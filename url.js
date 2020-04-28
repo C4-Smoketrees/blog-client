@@ -1,1 +1,1 @@
-module.exports = process.env.BLOG_URL
+module.exports = process.env.BLOG_URL;
